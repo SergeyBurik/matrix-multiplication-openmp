@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# ===== Strong scaling =====
-df_strong = pd.read_csv("results.csv")  # CSV с M=N=K=2000 и разными P
+# Strong scaling
+df_strong = pd.read_csv("results.csv")
 df_strong.columns = df_strong.columns.str.strip() 
 # усредняем по run
 strong_avg = df_strong.groupby("P")["elapsed"].mean().reset_index()
@@ -28,8 +28,8 @@ plt.savefig("strong_scaling.png")
 plt.show()
 
 
-# ===== Weak scaling =====
-df_weak = pd.read_csv("results_weak.csv")  # CSV с увеличением размера матриц для P
+# Weak scaling
+df_weak = pd.read_csv("results_weak.csv")
 df_weak.columns = df_weak.columns.str.strip() 
 
 # усредняем по run
@@ -55,3 +55,4 @@ plt.grid(True)
 plt.tight_layout()
 plt.savefig("weak_scaling.png")
 plt.show()
+
